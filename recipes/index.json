@@ -1,0 +1,22 @@
+{
+  "generated": "2026-10-22T04:10:47+00:00",
+  "count": 1,
+  "recipes": [
+    {
+      "slug": "baked-cream-corn",
+      "title": "Baked Cream Corn",
+      "image": "images/baked-cream-corn.jpg",
+      "description": "In this family recipe, creamed corn is baked with eggs, milk, butter and spices. Play with the spice and sugar measurements to suit your own taste.",
+      "total_minutes": 65,
+      "servings": "8 servings",
+      "tags": [
+        "dinner",
+        "side dish",
+        "southern"
+      ],
+      "source_name": "Allrecipes",
+      "added": "2026-10-22",
+      "search": "baked cream corn dinner side dish southern 2 eggs 2 tablespoons milk 2 (14 ¾ ounce) cans creamed corn 2 tablespoons butter, diced 1 tablespoon all-purpose flour 1 tablespoon white sugar ½ teaspoon black pepper ½ teaspoon celery salt ½ teaspoon onion powder ¼ teaspoon garlic powder"
+    }
+  ]
+}
