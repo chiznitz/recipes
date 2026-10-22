@@ -1,0 +1,83 @@
+name: Add recipes
+
+on:
+  schedule:
+    # Hourly sheet check; skipped entirely until the RECIPE_SHEET_CSV variable is set
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Recipe URL to add (leave blank to sync the Google Sheet)"
+        required: false
+        default: ""
+      tags:
+        description: "Optional tags, comma-separated (e.g. thanksgiving, side dish)"
+        required: false
+        default: ""
+      notes:
+        description: "Optional family notes"
+        required: false
+        default: ""
+  # Hand edits or deletions of recipe files rebuild recipes/index.json
+  push:
+    branches: [main]
+    paths:
+      - "recipes/*.json"
+      - "!recipes/index.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: add-recipes
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.event_name != 'schedule' || vars.RECIPE_SHEET_CSV != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Some sites only answer real browsers; the importer falls back to the runner's preinstalled Chrome
+      - name: Import recipe from URL
+        if: inputs.url != ''
+        env:
+          RECIPE_URL: ${{ inputs.url }}
+          RECIPE_TAGS: ${{ inputs.tags }}
+          RECIPE_NOTES: ${{ inputs.notes }}
+        run: python scripts/import_recipe.py "$RECIPE_URL" --tags "$RECIPE_TAGS" --notes "$RECIPE_NOTES"
+
+      - name: Sync Google Sheet
+        if: inputs.url == '' && github.event_name != 'push'
+        env:
+          RECIPE_SHEET_CSV: ${{ vars.RECIPE_SHEET_CSV }}
+        run: python scripts/sync_sheet.py
+
+      - name: Rebuild index
+        if: github.event_name == 'push'
+        run: python scripts/import_recipe.py --rebuild-index
+
+      - name: Commit if changed
+        run: |
+          for d in recipes images data; do
+            if [ -e "$d" ]; then git add -A -- "$d"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          new=$(git diff --cached --name-only --diff-filter=A -- 'recipes/*.json' | grep -v index.json | xargs -r -n1 basename | sed 's/\.json$//' | paste -sd, - | sed 's/,/, /g')
+          if [ -n "$new" ]; then msg="Add recipe: $new"
+          elif [ "${{ github.event_name }}" = "push" ]; then msg="Rebuild recipe index"
+          else msg="Update recipes"; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "$msg"
+          git pull --rebase origin main
+          git push origin HEAD:main
