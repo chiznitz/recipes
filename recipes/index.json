@@ -1,5 +1,5 @@
 {
-  "count": 2,
+  "count": 3,
   "recipes": [
     {
       "slug": "nanas-pa-dutch-potato-and-bread-filling",
@@ -14,6 +14,21 @@
       "source_name": "Food.com",
       "added": "2026-10-23",
       "search": "nana's pa dutch potato and bread filling potato 5 lbs potatoes, scrubbed, peeled and cut up 4 tablespoons butter 1 ½ cups milk 1 cup chicken stock ¾ cup butter (1 ½ sticks) 3 cups finely chopped celery (use the leaves also) 2 cups finely chopped sweet onions ¼ cup chopped fresh parsley ½ teaspoon salt (or more to taste) ½ teaspoon pepper 7-8 slices toasted white bread, cut into small cubes 3 eggs, beaten"
+    },
+    {
+      "slug": "mississippi-pot-roast-the-best-ever-pot-roast",
+      "title": "Mississippi Pot Roast {The BEST EVER Pot Roast}",
+      "image": "images/mississippi-pot-roast-the-best-ever-pot-roast.jpg",
+      "description": "This Mississippi Pot Roast is the most delicious pot roast you will EVER eat! Made with just five simple ingredients and slow cooked in the crockpot, you are going to fall in love with this!",
+      "total_minutes": 485,
+      "servings": "8 servings",
+      "tags": [
+        "main",
+        "american"
+      ],
+      "source_name": "belleofthekitchen.com",
+      "added": "2026-10-23",
+      "search": "mississippi pot roast {the best ever pot roast} main american 1 (3-4 pounds) chuck roast 1 packet ranch dressing mix 1 packet au jus gravy mix ¼ cup butter 4-5 pepperoncini peppers"
     },
     {
       "slug": "baked-cream-corn",
