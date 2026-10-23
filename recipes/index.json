@@ -1,6 +1,20 @@
 {
-  "count": 1,
+  "count": 2,
   "recipes": [
+    {
+      "slug": "nanas-pa-dutch-potato-and-bread-filling",
+      "title": "Nana's Pa Dutch Potato and Bread Filling",
+      "image": "images/nanas-pa-dutch-potato-and-bread-filling.jpg",
+      "description": "This is my Nana's mother's recipe, which was probably her mother's (who only spoke Pa-German). Nana made this every holiday with turkey and ham. It's a bit of work, but well worth it. Nana always made it the day before and baked it the day of eating it.",
+      "total_minutes": 65,
+      "servings": "15 servings",
+      "tags": [
+        "potato"
+      ],
+      "source_name": "Food.com",
+      "added": "2026-10-23",
+      "search": "nana's pa dutch potato and bread filling potato 5 lbs potatoes, scrubbed, peeled and cut up 4 tablespoons butter 1 ½ cups milk 1 cup chicken stock ¾ cup butter (1 ½ sticks) 3 cups finely chopped celery (use the leaves also) 2 cups finely chopped sweet onions ¼ cup chopped fresh parsley ½ teaspoon salt (or more to taste) ½ teaspoon pepper 7-8 slices toasted white bread, cut into small cubes 3 eggs, beaten"
+    },
     {
       "slug": "baked-cream-corn",
       "title": "Baked Cream Corn",
