@@ -17,7 +17,6 @@ step: `index.html` reads the JSON files in `recipes/`.
 4. Tap **Run workflow**. It takes about a minute, and the site updates a minute or two after that.
 
 Shortcut: https://github.com/chiznitz/recipes/actions/workflows/add-recipes.yml
-(the site footer links there too).
 
 The importer reads only the structured recipe data that recipe sites publish for
 Google (schema.org `Recipe`), so ads, pop-ups, and the life story above the recipe are
@@ -27,6 +26,10 @@ nothing is changed. Add that recipe through the sheet instead (below).
 ### From a Google Sheet (or a Google Form that feeds one)
 
 The same workflow checks a Google Sheet every hour and imports any rows it hasn't seen yet.
+
+The site's **Add a recipe** link (in the footer of every page) opens the family Google Form,
+which feeds this sheet:
+https://docs.google.com/forms/d/e/1FAIpQLSeDqux4RSuLJjeHEYwAQh0f1tM6EgGlyRR-nRMEVmthjfPkNQ/viewform
 
 1. Make a sheet with a header row. Use any of these columns, in any order (extra
    columns, like a Form's `Timestamp`, are ignored):
