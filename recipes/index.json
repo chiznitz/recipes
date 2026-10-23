@@ -1,5 +1,5 @@
 {
-  "count": 3,
+  "count": 4,
   "recipes": [
     {
       "slug": "nanas-pa-dutch-potato-and-bread-filling",
@@ -29,6 +29,21 @@
       "source_name": "belleofthekitchen.com",
       "added": "2026-10-23",
       "search": "mississippi pot roast {the best ever pot roast} main american 1 (3-4 pounds) chuck roast 1 packet ranch dressing mix 1 packet au jus gravy mix ¼ cup butter 4-5 pepperoncini peppers"
+    },
+    {
+      "slug": "easy-bread-pudding-recipe",
+      "title": "Easy Bread Pudding Recipe",
+      "image": "images/easy-bread-pudding-recipe.jpg",
+      "description": "This easy bread pudding recipe is the best - a vanilla-infused custard is poured over day-old bread and baked to perfection! Learn how to make bread pudding in under 1 hour, it's the best way to turn day-old bread into an irresistible dessert! Serve it warm with vanilla ice cream!",
+      "total_minutes": 55,
+      "servings": "16 Servings",
+      "tags": [
+        "dessert",
+        "american"
+      ],
+      "source_name": "joyfoodsunshine.com",
+      "added": "2026-10-23",
+      "search": "easy bread pudding recipe dessert american 12 ounces day-old brioche bread torn into pieces ((about 8 cups of bread)) 6 eggs ((beaten)) 1 cup light brown sugar ½ cup granulated sugar ¼ cup salted butter ((melted)) 2 cups whole milk ((room temperature)) 2 cups heavy whipping cream ((room temperature)) 2 teaspoons pure vanilla extract ¼ teaspoon fine sea salt 2 tablespoons salted butterbutter ((for greasing the pan)) ½ teaspoon ground cinnamon ½ cup raisins"
     },
     {
       "slug": "baked-cream-corn",
