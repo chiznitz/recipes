@@ -268,10 +268,26 @@ def _pretty_number(match: re.Match) -> str:
     return raw
 
 
+_SLASH_FRACTIONS = {
+    (1, 8): "⅛", (1, 4): "¼", (1, 3): "⅓", (3, 8): "⅜", (1, 2): "½",
+    (5, 8): "⅝", (2, 3): "⅔", (3, 4): "¾", (7, 8): "⅞",
+}
+
+
+def _slash_fraction(match: re.Match) -> str:
+    glyph = _SLASH_FRACTIONS.get((int(match.group(2)), int(match.group(3))))
+    if not glyph:
+        return match.group(0)
+    return f"{match.group(1)} {glyph}" if match.group(1) else glyph
+
+
 def tidy_ingredient(text: str) -> str:
-    """Turn feed-style decimals ("0.5 teaspoon") into kitchen fractions ("½ teaspoon")."""
+    """Write quantities the same way regardless of source: "0.5 teaspoon" and
+    "1/2 teaspoon" both become "½ teaspoon", and "7 -8 slices" becomes "7-8 slices"."""
     text = clean_text(text)
-    return re.sub(r"(?<![\d.])\d*\.\d+(?![\d.])", _pretty_number, text)
+    text = re.sub(r"(?<![\d.])\d*\.\d+(?![\d.])", _pretty_number, text)
+    text = re.sub(r"(?<![\d/])(?:(\d+)\s+)?(\d)/(\d)(?![\d/])", _slash_fraction, text)
+    return re.sub(r"(\d)\s*-\s*(\d)", r"\1-\2", text)
 
 
 _DURATION_RE = re.compile(
@@ -388,6 +404,7 @@ def parse_yield(value) -> str:
     if not texts:
         return ""
     best = max(texts, key=lambda t: (not t.isdigit(), len(t)))
+    best = re.sub(r"\bserving\(s\)", "servings", best, flags=re.I)
     if re.fullmatch(r"\d+(?:\s*-\s*\d+)?", best):
         return f"{best} servings"
     return best
